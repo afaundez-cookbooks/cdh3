@@ -16,11 +16,11 @@
 #
 # Important: In CDH3, the mapred.system.dir directory must be located inside a directory that is owned by mapred. For example, if mapred.system.dir is specified as /mapred/system, then /mapred must be owned by mapred. Don't, for example, specify /mrsystem as mapred.system.dir because you don't want / owned by mapred.
 #
-default[:hadoop][:namenode   ][:data_dirs]       = []
-default[:hadoop][:secondarynn][:data_dirs]       = []
-default[:hadoop][:jobtracker ][:system_hdfsdir]  = '/hadoop/mapred/system' # note: on the HDFS
-default[:hadoop][:jobtracker ][:staging_hdfsdir] = '/hadoop/mapred/system' # note: on the HDFS
-default[:hadoop][:datanode   ][:data_dirs]       = []
+default[:hadoop][:namenode   ][:data_dirs]       = ['/var/lib/hadoop-0.20/dfs/name']
+default[:hadoop][:secondarynn][:data_dirs]       = ['/var/lib/hadoop-0.20/dfs/namesecondary']
+default[:hadoop][:datanode   ][:data_dirs]       = ['/var/lib/hadoop-0.20/dfs/data']
+default[:hadoop][:jobtracker ][:system_hdfsdir]  = '${hadoop.tmp.dir}/mapred/system' # note: on the HDFS
+default[:hadoop][:jobtracker ][:staging_hdfsdir] = '${hadoop.tmp.dir}/mapred/staging' # note: on the HDFS
 default[:hadoop][:tasktracker][:scratch_dirs]    = []
 
 default[:hadoop][:home_dir] = "/usr/lib/hadoop"
@@ -28,7 +28,13 @@ default[:hadoop][:conf_dir] = "/etc/hadoop/conf"
 default[:hadoop][:custom_conf] = "/etc/hadoop-0.20/conf.chef"
 default[:hadoop][:pid_dir]  = "/var/run/hadoop"
 default[:hadoop][:log_dir]  = "${HADOOP_HOME}/logs"          # set in recipe using volume_dirs
-default[:hadoop][:tmp_dir]  = "/var/tmp"          # set in recipe using volume_dirs
+default[:hadoop][:tmp_dir]  = "/tmp/hadoop-${user.name}"          # set in recipe using volume_dirs
+default[:hadoop][:hive][:custom_conf] = '/etc/hive/conf.chef'
+default[:hadoop][:hive][:mysql][:host] = 'localhost'
+default[:hadoop][:hive][:mysql][:port] = '3307'
+default[:hadoop][:hive][:mysql][:username] = 'hiveuser'
+default[:hadoop][:hive][:mysql][:password] = 'password'
+default[:hadoop][:hive][:metastore][:uris] = node[:ipaddress]
 
 default[:hadoop][:exported_confs] ||= nil  # set in recipe
 default[:hadoop][:exported_jars]  ||= nil  # set in recipe

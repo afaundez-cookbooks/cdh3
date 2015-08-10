@@ -11,8 +11,6 @@ hadoop_config_hash = Mash.new({
   :extra_classpaths => node[:hadoop][:extra_classpaths].map{|nm, classpath| classpath }.flatten,
 }).merge(node[:hadoop])
 
-log node[:hadoop]
-
 %w[ core-site.xml     hdfs-site.xml     mapred-site.xml
     hadoop-env.sh     fairscheduler.xml hadoop-metrics.properties
 ].each do |conf_file|
