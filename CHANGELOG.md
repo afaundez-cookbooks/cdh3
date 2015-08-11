@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.1 - 2015-08-11
+### Fixed
+- add java dependency
+
 ## 0.2.0 - 2015-08-10
 ### Added
 - hive server

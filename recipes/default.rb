@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe 'java'
+
 case node[:platform]
 when 'ubuntu'
   apt_repository 'cloudera' do
