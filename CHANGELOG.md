@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0 - 2015-10-22
+### Removed
+- hive_server not in default recipe. Major bump because is not compatible with 0.x versions.
+### Added
+- pig recipe
+
 ## 0.2.1 - 2015-08-11
 ### Fixed
 - add java dependency

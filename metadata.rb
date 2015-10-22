@@ -4,7 +4,7 @@ maintainer_email 'alvaro@faundez.net'
 license          'All rights reserved'
 description      'Installs/Configures CDH3'
 long_description 'Installs/Configures a single node cluster with Cloudera Dristribution Hadoop 3'
-version          '0.2.1'
+version          '1.0.0'
 
 depends 'yum', '~> 3.6.3'
 depends 'mysql', '~> 6.0'

@@ -31,5 +31,3 @@ end
 include_recipe 'cdh3::conf'
 
 include_recipe 'cdh3::cluster'
-
-include_recipe 'cdh3::hive_server'
